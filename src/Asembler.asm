@@ -1,5 +1,5 @@
-use16
-org 100h
+bits 16
+org 0x100
  
     mov dx,hello
     mov ah,9
