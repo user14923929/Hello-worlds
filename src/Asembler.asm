@@ -1,11 +1,17 @@
-bits 16
-org 0x100
- 
-    mov dx,hello
-    mov ah,9
-    int 21h
- 
-    mov ax,4C00h 
-    int 21h
-;-------------------------------------------------------
-hello db 'Hello, world!$'
+section .data
+    msg db 'Hello, World!', 10, 0
+    msg_len equ $ - msg - 1
+
+section .text
+    global _start
+
+_start:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, msg
+    mov rdx, msg_len
+    syscall
+    
+    mov rax, 60
+    mov rdi, 0
+    syscall
